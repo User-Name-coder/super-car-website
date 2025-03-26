@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Supercars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #111;
+            color: white;
+        }
+        h1 {
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* 🔥 Search Bar Styles */
+        .search-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-bar {
+            width: 50%;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #0ff;
+            border-radius: 50px;
+            outline: none;
+            background-color: #222;
+            color: white;
+            text-align: center;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .search-bar:focus {
+            width: 70%;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .car {
+            width: 300px;
+            margin: 15px;
+            padding: 15px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .car:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Top 10 Supercars in the World</h1>
+
+    <!-- 🚀 Search Bar -->
+    <div class="search-container">
+        <input type="text" id="search" class="search-bar" placeholder="Search for a supercar...">
+    </div>
+
+    <div class="container">
+        <div class="car">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bugatti_Chiron_1.jpg/280px-Bugatti_Chiron_1.jpg" alt="Bugatti Chiron" onclick="openCarInfo('https://en.wikipedia.org/wiki/Bugatti_Chiron')">
+            <h2>Bugatti Chiron</h2>
+            <p>1500 HP - Top Speed: 261 mph</p>
+        </div>
+        <div class="car">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/2023_Lamborghini_Aventador_Ultimae.jpg/330px-2023_Lamborghini_Aventador_Ultimae.jpg" alt="Lamborghini Aventador SVJ" onclick="openCarInfo('https://en.wikipedia.org/wiki/Lamborghini_Aventador')">
+            <h2>Lamborghini Aventador SVJ</h2>
+            <p>770 HP - Top Speed: 217 mph</p>
+        </div>
+        <div class="car">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Red_2019_Ferrari_SF90_Stradale_%2848264238897%29_%28cropped%29.jpg/280px-Red_2019_Ferrari_SF90_Stradale_%2848264238897%29_%28cropped%29.jpg" alt="Ferrari SF90 Stradale" onclick="openCarInfo('https://en.wikipedia.org/wiki/Ferrari_SF90_Stradale')">
+            <h2>Ferrari SF90 Stradale</h2>
+            <p>986 HP - Top Speed: 211 mph</p>
+        </div>
+        <div class="car">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/McLaren_P1.jpg/280px-McLaren_P1.jpg" alt="McLaren P1" onclick="openCarInfo('https://en.wikipedia.org/wiki/McLaren_P1')">
+            <h2>McLaren P1</h2>
+            <p>903 HP - Top Speed: 217 mph</p>
+        </div>
+        <div class="car">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Porsche_918_Spyder_IAA_2013.jpg/330px-Porsche_918_Spyder_IAA_2013.jpg" alt="Porsche 918 Spyder" onclick="openCarInfo('https://en.wikipedia.org/wiki/Porsche_918_Spyder')">
+            <h2>Porsche 918 Spyder</h2>
+            <p>887 HP - Top Speed: 211 mph</p>
+        </div>
+    </div>
+
+    <!-- 🔥 JavaScript for Search & Image Click -->
+    <script>
+        // 🚀 Search Functionality
+        document.getElementById("search").addEventListener("keyup", function() {
+            let filter = this.value.toLowerCase();
+            let cars = document.querySelectorAll(".car");
+
+            cars.forEach(car => {
+                let carName = car.querySelector("h2").innerText.toLowerCase();
+                if (carName.includes(filter)) {
+                    car.style.display = "block"; // Show matching cars
+                } else {
+                    car.style.display = "none"; // Hide non-matching cars
+                }
+            });
+        });
+
+        // 🏎️ Open Car Info in New Tab
+        function openCarInfo(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
